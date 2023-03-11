@@ -24,7 +24,8 @@
 				},
 				actions:
 				{   				
-					listAction: '/list'				
+					listAction: '/list'	,
+					createAction:'/create'			
 				},
 			
 				fields: {
