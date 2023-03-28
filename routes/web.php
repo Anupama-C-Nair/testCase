@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\jRecordsController;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,11 @@ Route::get('/index', [jRecordsController::class, 'index'])->name('index');
 Route::post('/list',[jRecordsController::class,'listRecord'])->name('list');
 Route::post('/create', [jRecordsController::class, 'createRecord'])->name('create');
 
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/stripe/index',[StripeController::class,'index'])->name('StripeIndex');
+Route::post('/stripe/checkout',[StripeController::class, 'checkout'])->name('checkout');
+Route::get('/stripe/success',[StripeController::class, 'success'])->name('success');
