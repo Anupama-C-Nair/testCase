@@ -30,6 +30,7 @@
 			
 				fields: {
 					id: {
+						title: 'Id',
 						key: true,
 						create: false,
 						edit: false,
@@ -56,12 +57,15 @@
 					},
 					Amount:{
 						title:'Amount',
+						width: '20%',
 						edit: false,
 						list: true,
 						display: function(data){
 							var _quantity  = data.record.quantity;
 							var _rate = data.record.rate;
-							return _quantity * _rate;
+							var _amount = _quantity * _rate;
+							const minutes = Math.floor(_amount / 60);
+							return minutes +" m " + _amount % 60 +" sec ";
 						}
 					}
 				}
