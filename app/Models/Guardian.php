@@ -11,13 +11,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Guardian extends Model
 {
     use HasFactory;
-    protected $table = 'guardians';
+    protected $table = '_guardians';
     public function students(): HasMany{
         
         return $this->hasMany(Student::class);
     }
-    public function address(): HasMany{
-        return $this->hasMany('Address' ::class);
-    }
+   
 
 }

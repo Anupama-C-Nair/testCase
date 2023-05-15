@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\jRecordsController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/stripe/index',[StripeController::class,'index'])->name('StripeIndex');
 Route::post('/stripe/checkout',[StripeController::class, 'checkout'])->name('checkout');
 Route::get('/stripe/success',[StripeController::class, 'success'])->name('success');
+
+Route::get('/student/index',[StudentController::class,'index'])->name('studentIndex');
+Route::get('/student/create',[StudentController::class,'create'])->name('studentCreate');
+Route::post('/student/store',[StudentController::class, 'store'])->name('studentStore');

@@ -10,13 +10,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Student extends Model
 {
     use HasFactory;
-    protected $table = 'students' ;
+    protected $table = '_students' ;
     public function guardian() : BelongsTo{
 
         return $this->belongsTo(Guardian::class);
     }
     public function attendance(): HasMany{
-        return $this->hasMany(Attendance::class);
+        return $this->hasMany(attendance::class);
+    }
+    public function address(): HasMany{
+        return $this->hasMany(Address::class);
     }
     
 }

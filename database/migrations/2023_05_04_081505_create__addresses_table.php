@@ -18,10 +18,11 @@ return new class extends Migration
             $table->string('Area');
             $table->string('City');
             $table->string('Country');
-            $table->unsignedBigInteger('guardian_id');
-            $table->foreign('guardian_id')
+            $table->enum('type',['home','pickUp','dropOff']);
+            $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')
                     ->references('id')        
-                    ->on('_guardians')
+                    ->on('_students')
                     ->onDelete('cascade');
             $table->timestamps();
         });

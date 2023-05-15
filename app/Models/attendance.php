@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class attendance extends Model
 {
     use HasFactory;
-    protected $table = '_attendances';
+    protected $table = 'attendances';
     public function student():BelongsTo{
         return $this->belongsTo(Student::class);
     }
