@@ -13,10 +13,11 @@
     @foreach($students as $student)
     <h2>{{ $student->Name }}</h2>
 
-    <h3>Guardian</h3>
+    <h3>Guardian:</h3>
     <ul>
             <li>{{ $student->guardian->name }} ({{ $student->guardian->Email }})</li>
             @if ($student->guardian && $student->guardian->address)
+            <h3>Address:</h3>
                 @foreach ($student->guardian->address as $adrs)
                     <li>{{$adrs->Area}} </li>
                     <li>{{$adrs->type}}</li>
@@ -27,32 +28,21 @@
             
 
     </ul>
-    
+   
     <h3>Attendance</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Morning Drop off</th>
-                <th>Morning pick up</th>
-                <th>Evening Drop off</th>
-                <th>Evening pickup</th>
-            </tr>
-        </thead>
-        <tbody>
+        <ul>
             @if ($student->attendance)
-                @foreach ($student->attendance as $attendance)
-                <tr>
-                    <td>{{ $attendance->attendance_date }}</td>
-                    <td>{{ $attendance->morning_dropOff }}</td>
-                    <td>{{ $attendance->morning_pickup }}</td>
-                    <td>{{ $attendance->evening_pickup }}</td>
-                    <td>{{ $attendance->evening_dropOff }}</td>
-                </tr>
-            @endforeach
-            @else
-                <td> NO DATA AVAILABLE </td>
-            @endif
+             @foreach ($student->attendance as $attendance)
+                <li>Date:{{ $attendance->attendance_date }}</li>
+                <li>morning_dropOff:  {{ $attendance->morning_dropOff }}</li>
+                <li>morning_pickup:   {{ $attendance->morning_pickup }}</li>
+                <li>evening_pickup:   {{ $attendance->evening_pickup }}</li>
+                <li>evening_dropOff:  {{ $attendance->evening_dropOff }}</li>
+             @endforeach
+             @else
+             <li>NO DATA AVAILABLE</li>
+             @endif
+        </ul>
     @endforeach
             
         </tbody>
