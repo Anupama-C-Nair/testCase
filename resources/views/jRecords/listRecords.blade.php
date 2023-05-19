@@ -30,37 +30,43 @@
 			
 				fields: {
 					id: {
+						title: 'Id',
 						key: true,
 						create: false,
 						edit: false,
-						list: false
+						list: true
 					},
 					name: {
-						title: 'Name',
-						width: '40%'
+						title: 'Product Name',
+						width: '40%',
+						edit: false,
+						list: true
 					},
-					city: {
-						title: 'city',
-						width: '20%'
+					quantity: {
+						title: 'quantity',
+						width: '20%',
+						edit: false,
+						list: true,
 					},
-                    Birth_date: {
-						title: 'Birth date',
+                    rate: {
+						title: 'rate',
 						width: '30%',
-						type: 'date',
 						create: false,
-						edit: false
+						edit: false,
+						list: true
 					},
-                    status: {
-						title: 'Status',
-						width: '30%',
-						
-					},
-					Record_Date: {
-						title: 'Record date',
-						width: '30%',
-						type: 'date',
-						create: false,
-						edit: false
+					Amount:{
+						title:'Amount',
+						width: '20%',
+						edit: false,
+						list: true,
+						display: function(data){
+							var _quantity  = data.record.quantity;
+							var _rate = data.record.rate;
+							var _amount = _quantity * _rate;
+							const minutes = Math.floor(_amount / 60);
+							return minutes +" m " + _amount % 60 +" sec ";
+						}
 					}
 				}
 			});

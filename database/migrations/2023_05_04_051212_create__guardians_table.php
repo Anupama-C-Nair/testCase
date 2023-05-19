@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('j_tables', function(Blueprint $table){
+        Schema::create('_guardians', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('quantity');
-            $table->integer('rate');
-            
-
+            $table->string('Name');
+            $table->char('Gender');
+            $table->string('Phone');
+            $table->string('Email');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('j_tables');
+        Schema::dropIfExists('_guardians');
     }
 };
