@@ -34,6 +34,56 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'sname' => 'required',
+            'sgender'=> 'required',
+            'standard'=>'required',
+            'division' =>'required',
+            'gname' => 'required',
+            'ggender'=>'required',
+            'email' => 'required | email',
+            'phone' => 'required',
+            'addresses'=> 'required | array',
+            'addresses.*.bnumber' => 'required',
+            'addresses.*.fnumber' => 'required',
+            'addresses.*.area' => 'required',
+            'addresses.*.city' => 'required',
+            'addresses.*.country' => 'required',
+        ]);
+        //save guardian details
+        $guardian = new Guardian([
+            'Name' => $request->gname,
+            'Gender' => $request->ggender,
+            'Phone' => $request->phone,
+            'Email' => $request->email,
+        ]);
+        $guardian -> save();
+        //save Student details
+        $student = new Student([
+            'Name' => $request -> sname,
+            'Gender' => $request -> sgender,
+            'Standard' => $request -> standard,
+            'Division' => $request -> division,
+            'guardian_id' => $guardian->id,
+
+        ]);
+        $student->save();
+
+        //save Address
+        if($request -> has('addresses')){
+            foreach($request->addresses as $addressData){
+                $address = new Address();
+                $address -> Building_no = $addressData['bnumber'];
+                $address -> Flat_no = $addressData['fnumber'];
+                $address -> Area = $addressData['area'];
+                $address -> City = $addressData['city'];
+                $address -> Country = $addressData['country'];
+                $address -> type = $addressData['addressType'];
+                $address -> student_id = $student->id;
+                $address->save();
+            }
+
+        }
         return  redirect()->route('studentIndex');
     }
 
@@ -42,7 +92,13 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $student = Student::with('address','attendance')->find($id);
+        if($student){
+            return view('students.show',compact('student'));
+        }else{
+            return redirect()->route('studentIndex')->withErrors('Student could not find' );
+        }
+        
     }
 
     /**

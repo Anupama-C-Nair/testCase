@@ -32,3 +32,4 @@ Route::get('/stripe/success',[StripeController::class, 'success'])->name('succes
 Route::get('/student/index',[StudentController::class,'index'])->name('studentIndex');
 Route::get('/student/create',[StudentController::class,'create'])->name('studentCreate');
 Route::post('/student/store',[StudentController::class, 'store'])->name('studentStore');
+Route::get('/student/show/{id}',[StudentController::class, 'show'])->name('studentShow');
