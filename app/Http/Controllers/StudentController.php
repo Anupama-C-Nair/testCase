@@ -8,6 +8,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
+use Psy\Readline\Hoa\Console;
 
 class StudentController extends Controller
 {
@@ -41,7 +42,7 @@ class StudentController extends Controller
             'division' =>'required',
             'gname' => 'required',
             'ggender'=>'required',
-            'email' => 'required | email',
+            'email' => 'required',
             'phone' => 'required',
             'addresses'=> 'required | array',
             'addresses.*.bnumber' => 'required',

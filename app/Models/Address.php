@@ -11,7 +11,14 @@ class Address extends Model
 {
     use HasFactory;
     protected $table = '_addresses';
-
+  protected $fillable = [
+    'Building_no',
+    'Flat_no',
+    'Area',
+    'City',
+    'Country',
+    'student_id',
+  ];
   public static $addressTypes = [
     'home' => 'home',
     'pickUp' => 'pickUp',

@@ -12,6 +12,14 @@ class Guardian extends Model
 {
     use HasFactory;
     protected $table = '_guardians';
+    protected $fillable = [
+        'Name',
+        'Gender',
+        'Gender',
+        'Phone',
+        'Email',
+    ];
+    
     public function students(): HasMany{
         
         return $this->hasMany(Student::class);

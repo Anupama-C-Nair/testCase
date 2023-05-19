@@ -59,7 +59,7 @@
         <button type="submit" class="btn btn-primary"> Save </button>
     </form>
     <script>
-        
+        let addressCount = 0;
         function addAddress(){
             const addressTypes = @json($addressTypes);
             const addressDiv = document.createElement('div');
@@ -70,7 +70,7 @@
 
             const bnumberInput = document.createElement('input');
             bnumberInput.type = 'text';
-            bnumberInput.name = 'addresses[][bnumber]';
+            bnumberInput.name = 'addresses[' + addressCount + '][bnumber]';
             bnumberInput.required = true;
             addressDiv.appendChild(bnumberInput);
             addressDiv.appendChild(document.createElement('br'));
@@ -81,7 +81,7 @@
 
             const fnumberInput = document.createElement('input');
             fnumberInput.type = 'text';
-            fnumberInput.name = 'addresses[][fnumber]';
+            fnumberInput.name = 'addresses[' + addressCount + '][fnumber]';
             addressDiv.appendChild(fnumberInput);
             addressDiv.appendChild(document.createElement('br'));
 
@@ -91,7 +91,7 @@
 
             const areaInput = document.createElement('input');
             areaInput.type = 'text';
-            areaInput.name = 'addresses[][area]';
+            areaInput.name = 'addresses[' + addressCount + '][area]';
             addressDiv.appendChild(areaInput);
             addressDiv.appendChild(document.createElement('br'));
 
@@ -101,7 +101,7 @@
 
             const cityInput = document.createElement('input');
             cityInput.type = 'text';
-            cityInput.name = 'addresses[][city]';
+            cityInput.name = 'addresses[' + addressCount + '][city]';
             addressDiv.appendChild(cityInput);
             addressDiv.appendChild(document.createElement('br'));
 
@@ -111,7 +111,7 @@
 
             const countryInput = document.createElement('input');
             countryInput.type = 'text';
-            countryInput.name = 'addresses[][country]';
+            countryInput.name = 'addresses[' + addressCount + '][country]';
             addressDiv.appendChild(countryInput);
             addressDiv.appendChild(document.createElement('br'));
 
@@ -120,7 +120,7 @@
             addressDiv.appendChild(addressTypeLabel);
 
             const addressTypeSelect = document.createElement('select');
-            addressTypeSelect.name = "addresses[][addressType]";
+            addressTypeSelect.name = 'addresses[' + addressCount + '][addressType]';
             for(const key of Object.keys(addressTypes)){
                 const option = document.createElement('option');
                 option.value = addressTypes[key];
@@ -129,6 +129,7 @@
             }
             addressDiv.appendChild(addressTypeSelect);
             addressDiv.appendChild(document.createElement('br'));
+            addressCount++;
             document.getElementById('addresses').appendChild(addressDiv);
         }
     </script>

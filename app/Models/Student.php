@@ -11,6 +11,13 @@ class Student extends Model
 {
     use HasFactory;
     protected $table = '_students' ;
+    protected $fillable = [
+        'Name',
+        'guardian_id',
+        'Gender',
+        'Standard',
+        'Division',
+    ];
     public function guardian() : BelongsTo{
 
         return $this->belongsTo(Guardian::class);
