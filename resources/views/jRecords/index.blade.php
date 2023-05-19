@@ -2,11 +2,11 @@
   <table >
     <thead>
         <tr> 
-            <th scope="col">Product Id</th>
-            <th scope="col">Product Name</th>
-            <th scope="col">quantity</th>
-            <th scope="col">rate</th>
-            <th scope="col">Amount</th>
+            <th scope="col">Name</th>
+            <th scope="col">City</th>
+            <th scope="col">Birth date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Record Date</th>
         </tr>
     </thead> 
     <tbody>
@@ -15,11 +15,12 @@
     
         @foreach ($records as $record)
         <tr>
-            <td>{{$record['id']}}</td> 
-            <td>{{$record['name']}}</td>
-            <td>{{$record['quantity']}}</td>
-            <td>{{$record['rate']}}</td>
             
+            <td>{{$record['name']}}</td>
+            <td>{{$record['city']}}</td>
+            <td>{{$record['Birth_date']}}</td>
+            <td>{{$record['status']}}</td>
+            <td>{{$record['Record_Date']}}</td>
         </tr>    
         @endforeach
     

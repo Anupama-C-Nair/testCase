@@ -15,26 +15,35 @@ class jTableSeeder extends Seeder
     {
         $jtable = [
             [
-                'name'=>'Book',
-                'quantity'=>3,
-                'rate'=>300,
+                'name'=>'Albert roger',
+                'city'=>'Silicon valley',
+                'Birth_date'=>'1990-06-07',
+                'status'=>'active',
+                'Record_Date'=>'2023-03-06'
             ],
             [
-                'name'=>'pendrive',
-                'quantity'=>1,
-                'rate'=>340,
+                'name'=>'Baskin Robins',
+                'city'=>'Paris',
+                'Birth_date'=>'1944-01-20',
+                'status'=>'passive',
+                'Record_Date'=>'2023-03-03'
             ],
                 [
-                'name'=>'CD',
-                'quantity'=>5,
-                'rate'=>150,
+                    'name'=>'christopher loupez',
+                    'city'=>'athens',
+                    'Birth_date'=>'1982-01-21',
+                    'status'=>'active',
+                    'Record_Date'=>'2023-03-05'
                 ]
         ];
         foreach($jtable as $row){
             jTable::Create([
                 'name' =>$row['name'],
-                'quantity'=>$row['quantity'],
-                'rate'=>$row['rate'],
+                'city'=>$row['city'],
+                'Birth_date'=>$row['Birth_date'],
+                'status'=>$row['status'],
+                'Record_Date'=>$row['Record_Date']
+
             ]);
         }
            

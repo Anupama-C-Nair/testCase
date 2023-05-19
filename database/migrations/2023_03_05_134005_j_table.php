@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('j_tables', function(Blueprint $table){
             $table->id();
             $table->string('name');
-            $table->integer('quantity');
-            $table->integer('rate');
-            
+            $table->string('city');
+            $table->date('Birth_date');
+            $table->string('status');
+            $table->date('Record_Date');
 
         });
     }
