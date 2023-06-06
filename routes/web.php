@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\jRecordsController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\StudentController;
@@ -33,3 +34,10 @@ Route::get('/student/index',[StudentController::class,'index'])->name('studentIn
 Route::get('/student/create',[StudentController::class,'create'])->name('studentCreate');
 Route::post('/student/store',[StudentController::class, 'store'])->name('studentStore');
 Route::get('/student/show/{id}',[StudentController::class, 'show'])->name('studentShow');
+
+Route::get('/attendance/index', [AttendanceController::class, 'index'])->name('attendanceIndex');
+Route::get('/attendance/create', [AttendanceController::class, 'create'])->name('attendanceCreate');
+Route::post('/attendance/store',[AttendanceController::class, 'store'])->name('attendanceStore');
+Route::get('/attendance/edit/{id}', [AttendanceController::class, 'edit'])->name('attendanceEdit');
+Route::put('/attendance/update/{id}', [AttendanceController::class, 'update'])->name('attendanceUpdate');
+Route::get('/attendance/show/{id}', [AttendanceController::class, 'show'])->name('attendanceShow');

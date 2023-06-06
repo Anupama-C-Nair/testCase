@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\attendance;
 use App\Models\Guardian;
 use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
@@ -85,6 +87,10 @@ class StudentController extends Controller
             }
 
         }
+        $attendance = new attendance();
+        $attendance->student_id = $student->id;
+        $attendance->attendance_date = Carbon::today();
+        $attendance->save();
         return  redirect()->route('studentIndex');
     }
 

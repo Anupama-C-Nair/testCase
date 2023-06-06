@@ -18,6 +18,10 @@ class attendance extends Model
         'evening_dropOff',
         'student_id',
     ];
+    public static  $attendanceTypes = [
+        'yes' => 'Yes',
+        'no' => 'No',
+    ];
     public function student():BelongsTo{
         return $this->belongsTo(Student::class);
     }

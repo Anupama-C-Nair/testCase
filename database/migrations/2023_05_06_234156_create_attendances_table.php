@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->date('attendance_date');
-            $table->enum('morning_dropOff',['Yes','No']);
-            $table->enum('morning_pickup',['Yes','No']);
-            $table->enum('evening_pickup',['Yes','No']);
-            $table->enum('evening_dropOff',['Yes','No']);
+            $table->enum('morning_dropOff',['Yes','No'])->nullable();
+            $table->enum('morning_pickup',['Yes','No'])->nullable();
+            $table->enum('evening_pickup',['Yes','No'])->nullable();
+            $table->enum('evening_dropOff',['Yes','No'])->nullable();
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')
                     ->references('id')
