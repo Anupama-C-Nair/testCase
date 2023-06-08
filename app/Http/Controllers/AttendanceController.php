@@ -40,7 +40,6 @@ class AttendanceController extends Controller
             'evening_dropOff' => $request-> has('e_dropOff')  ? 'Yes' : 'No',
             'student_id' => $request->sId,
         ]);
-        dd($attendance);
         $attendance->save();
 
         return redirect()->route('attendanceIndex');
@@ -51,9 +50,8 @@ class AttendanceController extends Controller
      */
     public function show(string $id)
     {
-        $attendance = attendance::find($id);
-        dd($attendance);
-        return ;
+        $attendance = attendance::with('student')->find($id);
+        return view('attendance.show', compact('attendance')) ;
     }
 
     /**
